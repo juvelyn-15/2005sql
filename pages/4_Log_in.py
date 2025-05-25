@@ -30,11 +30,13 @@ def display_login():
         username = st.text_input("Username")
         password = st.text_input("Password", type="password")
 
-        if st.button("Login"):# process_log_in(username, password)
+        if st.button("Login"):
             if username in users and users[username] == password:
                     st.session_state.log = True
-                    st.success(f"Welcome {username}!")
+                    st.success(f"Welcome, {username}!")
                     st.switch_page("pages/2_Dashboard.py")
+            else:
+                 st.error("Invalid username or password")
             
     else:
         st.switch_page("pages/2_Dashboard.py")
